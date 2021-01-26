@@ -5,7 +5,10 @@ module.exports = {
     extend: {
       fontFamily:{
         'poppins': [ 'Poppins' ]
-      }
+      },
+      backgroundImage: theme => ({
+        'hero-pattern': "url('/src/img/mobile.png')"
+       })
     },
   },
   variants: {
