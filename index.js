@@ -5,10 +5,12 @@ const cookieParser = require('cookie-parser')
 const cors = require('cors')
 const fileUpload = require('express-fileupload')
 
+
+
 const userRoutes = require('./routes/userRoutes.js')
 const categoryRoutes = require('./routes/categoryRoutes')
 const uploadRoutes = require('./routes/uploadRoutes')
-
+const productRoutes = require('./routes/productRoutes')
 
 const app = express()
 dotenv.config()
@@ -17,7 +19,9 @@ dotenv.config()
 app.use(express.json())
 app.use(cors())
 app.use(cookieParser())
-app.use(fileUpload())
+app.use(fileUpload({
+    useTempFiles: true
+}))
 
 mongoose.connect(process.env.MONGGO_URI,
     {   useCreateIndex: true ,
@@ -35,4 +39,5 @@ app.listen(process.env.PORT, (req, res) => {})
 //Routes Goes here
 app.use('/api/user', userRoutes)
 app.use('/api/category', categoryRoutes)
-app.use('/api/upload', uploadRoutes)
+app.use('/api/image', uploadRoutes)
+app.use('/api/product', productRoutes)
