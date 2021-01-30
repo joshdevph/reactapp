@@ -23,7 +23,7 @@ async (req, res) => {
         }
 
         if(user){
-            return res.status(404).json({'msg':'Email is Already taken'})
+            return res.status(404).json({message:'Email is Already taken'})
         }
         const salt = await bcrypt.genSalt(10)
         password = await bcrypt.hash(password, salt)
@@ -64,7 +64,7 @@ route.post(
             const { email, password} = req.body
             let user = await UserSchema.findOne({email})
             if(!user){
-                return res.status(404).json({'msg':'Your email is not registered'})
+                return res.status(404).json({message :'Your email is not registered'})
             }
             let validatePassword = await bcrypt.compare( password , user.password)
 
@@ -100,8 +100,8 @@ route.get('/refresh_token', (req, res) => {
 
     jwt.verify(rf_token, process.env.REFRESH_TOKEN, (err, user) => {
         if(err) return res.status(400).json({message : "Please Login or Register"})
-        const token = createToken({id : user.id})
-        res.json({token})
+        const accesstoken = createToken({id : user.id})
+        res.json({accesstoken})
     })
 })
 

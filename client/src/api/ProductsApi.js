@@ -4,7 +4,7 @@ function ProductsApi() {
 
     const [products, setProducts] = useState([])
     const getProducts = async () =>{
-        const res = await axios.get('http://localhost:8080/api/product/getProduct')
+        const res = await axios.get('/api/product/getProduct')
         setProducts(res.data.products)
     }
     useEffect(() =>{
