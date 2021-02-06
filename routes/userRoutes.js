@@ -3,6 +3,7 @@ const jwt = require('jsonwebtoken')
 const bcrypt = require('bcryptjs')
 const { check, validationResult } = require('express-validator')
 const UserSchema = require('../models/User')
+const Payment = require('../models/Payment')
 const route = express.Router()
 const auth = require('../middleware/auth')
 
@@ -105,11 +106,30 @@ route.get('/refresh_token', (req, res) => {
     })
 })
 
+route.patch('/addcart', async (req, res) => {
+    try {
+        let user = await UserSchema.findById(req.body.user)
+        if(!user) return res.status(400).json({msg: "User does not exist."})
+
+        const update = await UserSchema.findOneAndUpdate({_id: user.id}, {
+            cart: req.body.cart
+        })
+        return res.json({msg: "Added to cart"})
+    } catch (err) {
+        return res.status(500).json({msg: err.message})
+    }
+})
+
 route.get('/getUser', auth, async (req, res) =>{
 
     let user = await UserSchema.findById(req.user.id).select('-password')
     if(!user ) return res.status(400).json({message : "User Doesn't Exist"})
     res.json(user)
+})
+route.get('/history', auth, async (req, res) =>{
+
+    let history = await Payment.find({user_id: req.user.id})
+    res.json(history)
 })
 
 const createToken = (user) => {

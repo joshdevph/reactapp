@@ -20,8 +20,8 @@ function Header() {
     const adminRouter = () =>{
         return(
             <>
-                <span className="text-md uppercase"><Link to="/create_products">create products</Link></span>
-                <span className="text-md uppercase"><Link to="/category">categories</Link></span>
+                <span className="text-md uppercase border-b-2 border-gray-50 hover:border-red-400"><Link to="/create_products">create products</Link></span>
+                <span className="text-md uppercase border-b-2 border-gray-50 hover:border-red-400"><Link to="/category">categories</Link></span>
             </>
         )
     }
@@ -29,8 +29,8 @@ function Header() {
     const loggedRouter = () =>{
         return(
             <>
-                <span className="text-md uppercase"><Link to="/history">history</Link></span>
-                <span className="text-md uppercase"><Link to="/" onClick={logoutUser}>logout</Link></span>
+                <span className="text-md uppercase border-b-2 border-gray-50 hover:border-red-400"><Link to="/history">history</Link></span>
+                <span className="text-md uppercase border-b-2 border-gray-50 hover:border-red-400"><Link to="/" onClick={logoutUser}>logout</Link></span>
             </>
         )
     }
@@ -43,22 +43,23 @@ function Header() {
 
                 <div>
                     <h1 className="text-3xl font-bold">
-                        <Link to="/"><span className="text-red-500 uppercase tracking-widest">{isAdmin ? 'Admin panel' : 'Company'}</span></Link>
+                        <Link to="/"><span className="text-red-500 uppercase tracking-widest">{isAdmin ? 'Admin panel' : 'ECart'}</span></Link>
                     </h1>
                 </div>
 
                 <div className="hidden space-x-10 md:flex md:items-center md:justify-center">
-                    <span className="text-md uppercase"><Link to="/">{isAdmin ? 'Product' : 'Shop'}</Link></span>
+                    <span className="text-md uppercase border-b-2 border-gray-50 hover:border-red-400"><Link to="/">{isAdmin ? 'Product' : 'Shop'}</Link></span>
 
                     {isAdmin && adminRouter()} {
-                        isLogged ? loggedRouter() : <span className="text-md uppercase"><Link to="/login">Login</Link></span>
+                        isLogged ? loggedRouter() : <span className="text-md uppercase border-b-2 border-gray-50 hover:border-red-400"><Link to="/login">Login</Link></span>
                     }
 
                     { isAdmin ? '' :
                                     <div>
-                                    <Link to="/cart"><FiShoppingCart className=" mt-4 text-2xl absolute"/></Link>
+                                    <Link to="/cart"><FiShoppingCart className=" mt-4 text-2xl absolute"/>
                                     <span className="relative text-sm font-semibold flex justify-center items-center w-7 h-7 top-0 left-3 bg-red-400 rounded-full">{cart.length}</span>
                                     <span className="relative text-sm font-semibold flex justify-center items-center w-7 h-7 bottom-7 left-3 bg-red-400 rounded-full animate-ping"></span>
+                                    </Link>
                                     </div>
                     }
                     

@@ -21,7 +21,7 @@ function DetailProducts() {
     if(detailProduct.length === 0) return null;
     return (
         <>
-            <div className=" border-r-8 border-red-300 transition duration-300 ease-in flex flex-col w-4/5 mt-2 m-auto items-center justify-center bg-white md:grid md:grid-cols-2 md:w-3/4 md:h-64">
+            <div className=" border-r-8 border-red-300 transition duration-300 ease-in flex flex-col w-4/5 mt-5 m-auto items-center justify-center bg-white md:grid md:grid-cols-2 md:w-1/2 md:h-64">
                 <img className="md:m-auto md:object-cover md:h-64 md:w-full" src={detailProduct.images.url} alt="" />
                 <div className="box-detail m-0 bg-gray-100 w-full pl-5 pb-4 md:h-full">
                     <div className="row mb-3 mt-3">
@@ -38,9 +38,9 @@ function DetailProducts() {
                 </div>
             </div>
 
-            <div>
-                <h2 className="ml-10 text-2xl my-3">Related products > </h2>
-                <div className="products w-full flex flex-col md:grid md:grid-cols-4 md:w-3/4 md:gap-1 md:mx-auto md:h-48" >
+            <div className="md:w-3/5 m-auto mt-10">
+                <h2 className=" ml-10 text-lg my-3 uppercase font-semibold tracking-wider md:ml-0">Related products > </h2>
+                <div className="products w-full flex flex-col md:grid md:grid-cols-3 md:w-full md:gap-1 md:mx-auto md:h-48 " >
                     {
                         products.map(product => {
                             return product.category === detailProduct.category 

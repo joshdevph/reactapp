@@ -16,7 +16,7 @@ function Register() {
     const register = async e =>{
         e.preventDefault()
         try {
-            await axios.post('http://localhost:8080/api/user/register', {...user})
+            await axios.post('/api/user/register', {...user})
             localStorage.setItem('frstLogin', true)
             window.location.href= "/"
         } catch (error) {

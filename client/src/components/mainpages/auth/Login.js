@@ -32,7 +32,7 @@ function Login() {
                     <form onSubmit={login} className="flex flex-col space-y-3 w-full px-4 md:px-7">
                         <input type="text"     required  name="email" className="  h-10 pl-2 rounded-md bg-red-50 text-black font-bold  text-xs focus:outline-none" placeholder="Email"  value={user.email} onChange={onChange}/>
 
-                        <input type="password" required autocpmplete="on" name="password" className="  h-10 pl-2 rounded-md bg-red-50 text-black font-bold  text-xs focus:outline-none" placeholder="Password" value={user.password} onChange={onChange}/>
+                        <input type="password" required name="password" className="  h-10 pl-2 rounded-md bg-red-50 text-black font-bold  text-xs focus:outline-none" placeholder="Password" value={user.password} onChange={onChange}/>
 
                         <button type="submit" className="inline-block bg-red-400 rounded-sm uppercase p-2 focus:outline-none">Login</button>
                         <Link to="/register" className="inline-block"><button type="submit" >Register</button></Link>
