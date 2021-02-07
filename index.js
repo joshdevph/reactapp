@@ -32,7 +32,7 @@ mongoose.connect(process.env.MONGGO_URI,
         .then(console.log("Db Connected")
 )
 
-if(process.env.NODE_ENV === 'production'){
+if(process.env.NODE.ENV === 'production'){
     app.use(express.static(path.join(__dirname, 'client', 'build')));
 
     app.get('*', (req, res) => {
