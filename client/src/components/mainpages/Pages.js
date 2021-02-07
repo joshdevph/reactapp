@@ -20,7 +20,7 @@ function Pages() {
             <Route path="/register" exact component={ isLogged ? Error : Register} />
             <Route path="/cart" exact component={Cart} />
             <Route path="/history" exact component={History}/>
-            <Route path="/error" exact component={Error} />
+            <Route path="*" exact component={Error} />
         </Switch>
     )
 }

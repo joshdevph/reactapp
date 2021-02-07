@@ -3,11 +3,14 @@ const cloudinary = require('cloudinary')
 const auth = require('../middleware/auth')
 const authAdmin = require('../middleware/auth_admin')
 const fs = require('fs')
+const dotenv = require('dotenv')
+
+dotenv.config()
 
 cloudinary.config({
-    cloud_name: 'dfvl0fq9e',
-    api_key: '478931156784286',
-    api_secret: 'UlZUuNTekJidA6B8vKV1wWQ2P3U'
+    cloud_name: process.env.CLOUD_NAME,
+    api_key: process.env.CLOUD_API_KEY,
+    api_secret: process.env.CLOUD_API_SECRET
 })
 
 route.post('/upload',auth , authAdmin, (req, res) =>{
