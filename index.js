@@ -24,7 +24,7 @@ app.use(fileUpload({
     useTempFiles: true
 }))
 
-mongoose.connect(process.env.MONGGO_URI,
+mongoose.connect("mongodb+srv://joshdevph:joshdevph24@cluster0.53r0n.mongodb.net/<dbname>?retryWrites=true&w=majority",
     {   useCreateIndex: true ,
         useUnifiedTopology: true,
         useNewUrlParser: true,
