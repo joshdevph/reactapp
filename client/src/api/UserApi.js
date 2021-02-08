@@ -35,7 +35,7 @@ function UserApi(token) {
     useEffect(() => {
         if(token){
             const gethistory = async() =>{
-                const res = await axios.get('/api/user/history', {
+                const res = await axios.get('https://kinaon.herokuapp.com/api/user/history', {
                     headers:{Authorization:token}
                 })
                 setHistory(res.data)
@@ -56,7 +56,7 @@ function UserApi(token) {
         if(check){
             setCart([...cart, {...product, quantity: 1}])
 
-            await axios.patch('api/user/addcart', {user:user, cart: [...cart, {...product, quantity: 1}]}, {
+            await axios.patch('https://kinaon.herokuapp.com/api/user/addcart', {user:user, cart: [...cart, {...product, quantity: 1}]}, {
                 headers: {Authorization: token}
             })
 

@@ -11,11 +11,11 @@ function Header() {
 
 
     const logoutUser = async () =>{
-        await axios.get('/api/user/logout')
+        await axios.get('https://kinaon.herokuapp.com/api/user/logout')
         
         localStorage.removeItem('frstLogin')
         
-        window.location.href = "/";
+        window.location.href = "https://kinaon.netlify.app/";
     }
     const adminRouter = () =>{
         return(

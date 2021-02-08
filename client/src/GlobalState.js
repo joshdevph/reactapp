@@ -8,7 +8,7 @@ export const DataProvider = ({children}) => {
     const [ token , setToken] = useState(false)
 
     const refreshToken = async () =>{
-        const res = await axios.get('/api/user/refresh_token')
+        const res = await axios.get('https://kinaon.herokuapp.com/api/user/refresh_token')
         setToken(res.data.accesstoken)
     }
 
