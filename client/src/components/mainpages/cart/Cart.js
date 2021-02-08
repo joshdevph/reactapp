@@ -25,7 +25,7 @@ function Cart() {
     },[cart])
 
     const addToCart = async (cart) =>{
-        await axios.patch('https://kinaon.herokuapp.com/api/user/addcart', {user:user,cart}, {
+        await axios.patch('/api/user/addcart', {user:user,cart}, {
             headers: {Authorization: token}
         })
     }
@@ -67,7 +67,7 @@ function Cart() {
     const tranSuccess = async (payment) => {
         const {paymentID, address} = payment;
 
-        await axios.post('https://kinaon.herokuapp.com/api/payment/createPayments', {user:user, cart, paymentID, address}, {
+        await axios.post('/api/payment/createPayments', {user:user, cart, paymentID, address}, {
             headers: {Authorization: token}
         })
 

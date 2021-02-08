@@ -16,9 +16,9 @@ function Register() {
     const register = async e =>{
         e.preventDefault()
         try {
-            await axios.post('https://kinaon.herokuapp.com/api/user/register', {...user})
+            await axios.post('/api/user/register', {...user})
             localStorage.setItem('frstLogin', true)
-            window.location.href= "https://kinaon.netlify.app/"
+            window.location.href= "/"
         } catch (error) {
             alert(error.response.data.message)
         }

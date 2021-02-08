@@ -16,9 +16,9 @@ function Login() {
     const login = async e =>{
         e.preventDefault()
         try {
-            await axios.post('https://kinaon.herokuapp.com/api/user/login', {...user})
+            await axios.post('/api/user/login', {...user})
             localStorage.setItem('frstLogin', true)
-            window.location.href= "https://kinaon.netlify.app/"
+            window.location.href= "/"
         } catch (error) {
             alert(error.response.data.message)
         }
