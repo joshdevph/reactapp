@@ -24,6 +24,13 @@ app.use(fileUpload({
     useTempFiles: true
 }))
 
+//Routes Goes here
+app.use('/api/user', userRoutes)
+app.use('/api/category', categoryRoutes)
+app.use('/api/image', uploadRoutes)
+app.use('/api/product', productRoutes)
+app.use('/api/payment', paymentRoutes)
+
 mongoose.connect(process.env.MONGGO_URI,
     {   useCreateIndex: true ,
         useUnifiedTopology: true,
@@ -32,23 +39,16 @@ mongoose.connect(process.env.MONGGO_URI,
         .then(console.log("Db Connected")
 )
 
-if (process.env.NODE_ENV === 'production') {
-    // Exprees will serve up production assets
-    app.use(express.static('client/build'));
-  
-    // Express serve up index.html file if it doesn't recognize route
-    app.get("*", (req, res) => {
-      res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
-    });
-  }
+if(process.env.NODE_ENV === 'production'){
+  app.use(express.static('client/build'))
+  app.get('*', (req, res) => {
+      res.sendFile(path.join(__dirname, 'client', 'build', 'index.html'))
+  })
+}
+
+
 //Port Listening
 app.listen(process.env.PORT, (req, res) => {})
 
 
 
-//Routes Goes here
-app.use('/api/user', userRoutes)
-app.use('/api/category', categoryRoutes)
-app.use('/api/image', uploadRoutes)
-app.use('/api/product', productRoutes)
-app.use('/api/payment', paymentRoutes)
