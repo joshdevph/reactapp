@@ -14,7 +14,7 @@ function Pages() {
     const [isLogged] = state.userAPI.isLogged
     return (
         <Switch>
-            <Route path="/" exact component={Products} />
+            <Route path='/' exact component={Products} />
             <Route path="/detail/:id" exact component={DetailProducts} />
             <Route path="/login" exact component={ isLogged ? Error : Login} />
             <Route path="/register" exact component={ isLogged ? Error : Register} />
