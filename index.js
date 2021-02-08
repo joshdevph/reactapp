@@ -36,14 +36,17 @@ mongoose.connect(process.env.MONGGO_URI,
         useUnifiedTopology: true,
         useNewUrlParser: true,
         useFindAndModify: false})
-        .then(console.log("Db Connected")
+        .then(console.log("Database Connected")
 )
 
 if(process.env.NODE_ENV === 'production'){
-  app.use(express.static('client/build'))
+    
+  app.use(express.static(path.join(__dirname, 'client', 'build', 'index.html')))
+  app.get('*', (req, res) => {
+      res.sendFile(path.join(__dirname, 'client', 'build', 'index.html'))
+  })
 }
 
-console.log(__dirname);
 //Port Listening
 app.listen(process.env.PORT, (req, res) => {})
 
